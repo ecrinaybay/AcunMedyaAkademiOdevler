@@ -1,0 +1,65 @@
+1. Abstract Class (Soyut Sınıf)
+Soyut sınıflar, kendilerinden nesne türetilemeyen, ancak kalıtım yoluyla kullanılabilen sınıflardır.
+Soyut metotlar içererek, alt sınıfların belirli metotları mutlaka uygulamasını zorunlu kılar.
+Örnek:
+csharp
+Kopyala
+Düzenle
+abstract class Animal
+{
+    public abstract void MakeSound();  // Alt sınıflar bu metodu zorunlu olarak yazmalı
+}
+
+class Dog : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Köpek: Hav hav!");
+    }
+}
+2. Abstraction (Soyutlama)
+Bir nesnenin sadece gerekli özelliklerini ve davranışlarını açığa çıkarıp, gereksiz detayları gizlemektir.
+Gerçek dünya örneği: Bir araba sürerken motorun nasıl çalıştığını bilmek zorunda değiliz, sadece direksiyon, gaz, fren gibi temel işlevlere odaklanırız.
+C#’ta soyutlama, abstract class ve interface kullanılarak sağlanır.
+3. Polymorphism (Çok Biçimlilik)
+Aynı metodun, farklı sınıflarda farklı şekillerde uygulanabilmesini sağlar.
+Örnek:
+csharp
+Kopyala
+Düzenle
+class Animal
+{
+    public virtual void Speak()
+    {
+        Console.WriteLine("Hayvan bir ses çıkarıyor...");
+    }
+}
+
+class Cat : Animal
+{
+    public override void Speak()
+    {
+        Console.WriteLine("Kedi: Miyav!");
+    }
+}
+
+class Dog : Animal
+{
+    public override void Speak()
+    {
+        Console.WriteLine("Köpek: Hav hav!");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Animal myCat = new Cat();
+        Animal myDog = new Dog();
+
+        myCat.Speak(); // Çıktı: Kedi: Miyav!
+        myDog.Speak(); // Çıktı: Köpek: Hav hav!
+    }
+}
+Aynı metod (Speak) farklı sınıflarda farklı davranış sergiliyor. İşte bu polymorphism’dir!
